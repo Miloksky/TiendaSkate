@@ -1,0 +1,82 @@
+body {
+margin: 0px;
+padding: 0px;
+background-image: url("/SimuladorTienda/TiendaSkate/local/background.jpg");
+background-size:cover;
+background-position:initial;
+background-color: rgba(0, 0, 0, 0.5 );
+background-blend-mode: darken;
+}
+
+.nav-bar{
+    background-color: black;
+    padding:  0px 5%;
+    display: flex;
+    align-items: center;
+    border-radius: 1%;
+
+}
+.logo{
+    max-width: 70px;
+    height:auto;
+    overflow: hidden;
+    padding: 1% 0px;
+}
+.logo img {
+
+    display: block;
+    width: 100%;
+    height:100%;
+    object-fit: contain;
+}
+
+.sites{
+    width: 100%;
+   padding-top:  2%;
+    display: flex;
+    
+}
+.sites ul{
+    width: 100%;
+    color: #FFFFFF;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 0px;
+    margin: 0px;
+   
+}
+
+.sites li, .sites a{
+    font-family: "Big Shoulders Stencil", sans-serif;
+    font-weight: bolder;
+    font-size: 1.25rem;
+    color: inherit;
+    text-decoration: none;
+    list-style: none;
+}
+
+.sites li:hover, .sites a:hover{
+    color: #ffc929;
+    text-decoration:underline;
+    transform: scale(1.1); 
+}
+
+.carUser{
+    padding-top: 1%;
+display: flex;
+gap: 30px;
+width: 180px;
+height: auto;
+overflow: hidden;
+}
+
+.carUser img{
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.carUser .user:hover, .carUser .car:hover{
+    transform: scale(1.1); 
+}
