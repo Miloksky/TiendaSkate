@@ -48,6 +48,7 @@ background-blend-mode: darken;
 
 .sites li, .sites a{
     font-family: "Big Shoulders Stencil", sans-serif;
+    text-shadow: 1px 1px 2px 3px;
     font-weight: bolder;
     font-size: 1.25rem;
     color: inherit;
@@ -62,7 +63,7 @@ background-blend-mode: darken;
 }
 
 .carUser{
-    padding-top: 1%;
+padding-top: 1%;
 display: flex;
 gap: 30px;
 width: 180px;
@@ -80,3 +81,34 @@ overflow: hidden;
 .carUser .user:hover, .carUser .car:hover{
     transform: scale(1.1); 
 }
+
+.grid-container{
+    object-fit: contain;
+    overflow: hidden;
+    padding: 10% 5% 5% 5%;
+    display: grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,2fr));
+    grid-template-rows: repeat(auto-fit,minmax(300px,3fr));;
+    gap : 20px;
+}
+.imagen{
+    font-family: "Big Shoulders Stencil", sans-serif;
+    padding: 0px 2% 5% 2%;
+    text-align: center;
+    background-color: #FFFFFF;
+    border:solid 1px black;
+   
+}
+.imagen:hover{
+ transform: scale(1.1); 
+}
+.imagen img{
+    width: 100%;
+    height: auto;
+}
+
+
+
+
+
+
