@@ -6,10 +6,6 @@ let $main = document.querySelector("main");
 let $cartPanel = document.createElement("div");
 $cartPanel.classList.add("shoppingCar");
 
-let $cartTitle = document.createElement("h2");
-$cartTitle.textContent = "Carrito de compras";
-$cartPanel.append($cartTitle);
-
 $main.append($cartPanel);
 
 
