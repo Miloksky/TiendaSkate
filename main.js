@@ -1,24 +1,29 @@
 
+// Referencias al DOM
 let $productGrid = document.querySelector(".grid-container");
 let $main = document.querySelector("main");
 
-
+// Crear contenedor del carrito
 let $cartPanel = document.createElement("div");
 $cartPanel.classList.add("shoppingCar");
-
 $main.append($cartPanel);
 
-
+// Variables para el carrito
 let shoppingCart = [];
 let total = 0;
+
+// Mostrar carrito desde el inicio
 updateCartDisplay();
 
+
+// Generar el grid de los productos en pantalla
 function renderProductGrid() {
   for (let product of productos) {
     let $productCard = document.createElement("div");
     $productCard.classList.add("imagen");
     $productCard.setAttribute("id", product.id);
 
+    // Elementos del producto
     let $img = document.createElement("img");
     $img.src = product.imagen;
 
@@ -30,27 +35,27 @@ function renderProductGrid() {
 
     let $price = document.createElement("p");
     $price.textContent = `Precio : ${product.precio} $`;
-
+    // Botón para agregar al carrito
     let $addButton = document.createElement("button");
     $addButton.textContent = "Agregar al carrito";
 
     $addButton.addEventListener("click", () => {
       addProductToCart(product);
     });
-
+    // Insertar en el DOM
     $productGrid.append($productCard);
     $productCard.append($img, $name, $description, $price, $addButton);
   }
 }
 
 
-
+// Añadir un producto al carrito
 function addProductToCart(product) {
   if (product.stock === 0) {
     alert("Producto agotado");
     return;
   }
-
+  // Si ya existe en el carrito aumentar la cantidad
   let productInCart = shoppingCart.find(item => item.id === product.id);
   if (!productInCart) {
     productInCart = {id: product.id, name: product.nombre, quantity: 0, precio: product.precio
@@ -62,12 +67,14 @@ function addProductToCart(product) {
   product.stock--;
   total += product.precio;
 
+  // Refrescar carrito
   updateCartDisplay();
+ 
   $cartPanel.classList.add('open');
 }
 
 
-
+//Actulizar el carrito
 function updateCartDisplay() {
   $cartPanel.innerHTML = "";
 
@@ -75,6 +82,8 @@ function updateCartDisplay() {
   $title.textContent = "Carrito de compras";
   $cartPanel.append($title);
 
+
+  // Mostrar cada producto en el carrito
   for (let item of shoppingCart) {
     let $itemDiv = document.createElement("div");
     $itemDiv.classList.add("item");
@@ -83,6 +92,8 @@ function updateCartDisplay() {
     let $info = document.createElement("p");
     $info.textContent = `${item.name} : ${item.precio} $ x ${item.quantity} = ${item.precio * item.quantity} $`;
 
+
+    // Botones de más, menos y eliminar
     let $removeBtn = document.createElement("button");
     $removeBtn.textContent = "Eliminar";
     $removeBtn.addEventListener("click", () => {
@@ -101,9 +112,11 @@ function updateCartDisplay() {
     $cartPanel.append($itemDiv);
   }
 
+  // Mostrar total
   let $totalDisplay = document.createElement("p");
   $totalDisplay.textContent = `Total : ${total} $`;
 
+  // Botón para vaciar carrito
   let $clearBtn = document.createElement("button");
   $clearBtn.textContent = "Vaciar carrito";
   $clearBtn.classList.add('empty');
@@ -115,7 +128,8 @@ function updateCartDisplay() {
     if (confirmClear){ 
       clearCart();}
   });
-
+  
+  // Botón para comprar
   let $buyBtn = document.createElement("button");
   $buyBtn.textContent = "Proceder a comprar";
   $buyBtn.classList.add('buy');
@@ -127,7 +141,7 @@ function updateCartDisplay() {
 
 
 
-
+// Función boton +
 function increaseProductQuantity(e) {
   let id = Number(e.target.parentElement.id);
   let cartItem = shoppingCart.find(p => p.id === id);
@@ -144,6 +158,7 @@ function increaseProductQuantity(e) {
   updateCartDisplay();
 }
 
+// Función boton -
 function decreaseProductQuantity(e) {
   let id = Number(e.target.parentElement.id);
   let cartItem = shoppingCart.find(p => p.id === id);
@@ -160,6 +175,7 @@ function decreaseProductQuantity(e) {
   updateCartDisplay();
 }
 
+//Función eliminar producto del carrito
 function removeItemFromCart($itemDiv) {
   let id = Number($itemDiv.getAttribute("id"));
   let item = shoppingCart.find(p => p.id === id);
@@ -174,6 +190,7 @@ function removeItemFromCart($itemDiv) {
   updateCartDisplay();
 }
 
+//Función todo el carrito
 function clearCart() {
   for (let item of shoppingCart) {
     let original = productos.find(p => p.id === item.id);
@@ -187,6 +204,7 @@ function clearCart() {
   updateCartDisplay();
 }
 
+// Compra del carrito
 function processPurchase() {
   if (shoppingCart.length === 0){
     alert('El carrito esta vacio');
@@ -204,11 +222,13 @@ function processPurchase() {
 
  
 
+// Botón para mostrar/ocultar carrito
 let $toggleCartButton = document.querySelector('a.car');
 $toggleCartButton.addEventListener('click', () => {
   $cartPanel.classList.toggle('open');
 });
 
+// Botón para abrir/ocultar menú hamburguesa
 const $hamburgerBtn = document.querySelector('.hamburger-btn');
 const $sideMenu = document.querySelector('.sites');
 
